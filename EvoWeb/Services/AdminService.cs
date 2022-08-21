@@ -11,7 +11,7 @@ public class AdminService
         _logger = logger;
     }
 
-    public void Default()
+    public void DefaultAdmin()
     {
         Admin newAdmin = new Admin(); // создаем экземпляр
         newAdmin.Login = "root"; // заполняем поля
@@ -21,15 +21,15 @@ public class AdminService
         _logger.Log(LogLevel.Warning, "Создан админ по умолчанию");
     }
 
-    public List<Admin> GetAll()
+    public List<Admin> GetAllAdmins()
     {
         _logger.Log(LogLevel.Information, "Вывод списка админов");
         return _data.Admins.ToList();
     }
     
-    public void WipeAll()
+    public void WipeAllAdmins()
     {
-        foreach (var item in GetAll())
+        foreach (var item in GetAllAdmins())
         {
             _data.Admins.Remove(item);
             _logger.Log(LogLevel.Warning, $"Удален админ {item}");
@@ -37,7 +37,7 @@ public class AdminService
         _data.SaveChanges();
     }
 
-    public void Remove(int id, string oldPass)
+    public void RemoveAdmin(int id, string oldPass)
     {
         Admin? admin = _data.Admins.FirstOrDefault(x => x.Id == id);
         if (admin.Password == oldPass)
@@ -53,13 +53,13 @@ public class AdminService
         
     }
 
-    public void Add(Admin admin)
+    public void AddAdmin(Admin admin)
     {
         _data.Admins.Add(admin);
         _data.SaveChanges();
     }
 
-    public Admin? Get(int id)
+    public Admin? GetAdmin(int id)
     {
         return _data.Admins.FirstOrDefault(x => x.Id == id);
     }

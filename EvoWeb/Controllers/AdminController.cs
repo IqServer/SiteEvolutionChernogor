@@ -16,22 +16,22 @@ public class AdminController
         _adminService = adminService;
     }
 
-    [HttpGet("GetAll")]
-    public List<Admin>? GetAll()
+    [HttpGet("GetAllAdmins")]
+    public List<Admin>? GetAllAdmins()
     {
-        return _adminService.GetAll();
+        return _adminService.GetAllAdmins();
     }
 
-    [HttpGet("GetItem")]
+    [HttpGet("GetAdmin")]
     public Admin GetItem(int id)
     {
-        return _adminService.Get(id);
+        return _adminService.GetAdmin(id);
     }
 
     [HttpPost("AddAdmin")]
     public void AddAdmin(Admin admin)
     {
-        _adminService.Add(admin);
+        _adminService.AddAdmin(admin);
     }
 
     [HttpPost("EditPass")]
@@ -43,6 +43,6 @@ public class AdminController
     [HttpDelete("Remove")]
     public void Remove(int id, string oldPass)
     {
-        _adminService.Remove(id, oldPass);
+        _adminService.RemoveAdmin(id, oldPass);
     }
 }

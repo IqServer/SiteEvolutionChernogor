@@ -25,22 +25,22 @@ public class DefaultDataController : ControllerBase
         _workerService = workerService;
     }
 
-    [HttpPost("DefaultAll")]
-    public void DefaultAll()
+    [HttpPost("DefaultAllData")]
+    public void DefaultAllData()
     {
-        _logger.Log(LogLevel.Warning, "Выполняется создание данных по умолчанию");
-        _projectService.Default();
+        _logger.Log(LogLevel.Warning, "Выполняется создание данных по умолчанию...");
+        _projectService.DefaultProject();
         _workerService.Default();
         _requestService.Default();
-        _adminService.Default();
+        _adminService.DefaultAdmin();
     }
 
-    [HttpDelete("WipeAll")]
-    public void WipeAll()
+    [HttpDelete("WipeAllData")]
+    public void WipeAllData()
     {
-        _logger.Log(LogLevel.Warning, "Выполняется очистка базы данных");
-        _adminService.WipeAll();
-        _projectService.WipeAll();
+        _logger.Log(LogLevel.Warning, "Выполняется очистка базы данных...");
+        _adminService.WipeAllAdmins();
+        _projectService.WipeAllProjects();
         _requestService.WipeAll();
         _workerService.WipeAll();
     }
