@@ -28,4 +28,18 @@ public class RequestService
         _data.Add(newRequest);
         _data.SaveChanges();
     }
+
+    public List<Request> GetAll()
+    {
+        return _data.Requests.ToList();
+    }
+
+    public void WipeAll()
+    {
+        foreach (var item in GetAll())
+        {
+            _data.Requests.Remove(item);
+        }
+        _data.SaveChanges();
+    }
 }

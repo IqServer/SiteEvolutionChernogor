@@ -22,19 +22,16 @@ public class ProjectController : ControllerBase
         return _service.GetAll();
     }
 
-    [HttpPost("Add")]
-    public void Add(string title,
-        string description,
-        string advertLink,
-        string iconLink,
-        uint price)
+    [HttpGet]
+    public Project? GetProjectById(int id)
     {
-        _service.Add(title, description, advertLink, iconLink, price);
+        return _service.GetProjectById(id);
     }
 
-    [HttpDelete("Remove")]
-    public void Remove(string title)
+    [HttpPost("Add")]
+    public void Add([FromBody]Project project)
     {
-        _service.Remove(title);
+        _service.Add(project);
     }
+    
 }

@@ -11,18 +11,8 @@ public class ProjectService
         _logger = logger;
     }
 
-    public void Add(string title,
-                    string description,
-                    string advertLink,
-                    string iconLink,
-                    uint price)
+    public void Add(Project newProject)
     {
-        Project newProject = new Project();
-        newProject.Title = title;
-        newProject.Description = description;
-        newProject.AdvertLink = advertLink;
-        newProject.IconLink = iconLink;
-        newProject.Price = price;
         _data.Add(newProject);
         _data.SaveChanges();
         
@@ -33,8 +23,15 @@ public class ProjectService
         return _data.Projects.ToList();
     }
 
-    public void Remove(string title)
+    public Project? GetProjectById(int id)
     {
+        return _data.Projects.FirstOrDefault(x => x.Id == id);
+    }
+
+    public void Remove(int id)
+    {
+        
+        /* велосипед
         foreach (Project item in GetAll())
         {
             if (item.Title == title)
@@ -44,6 +41,8 @@ public class ProjectService
                 break;
             }
         }
+        */
+        //_data.Projects.FirstOrDefault(x => x.id == id).Remove();
     }
     
 
@@ -56,6 +55,15 @@ public class ProjectService
         newProject.IconLink = "about:blank";
         newProject.Price = 0;
         _data.Add(newProject);
+        _data.SaveChanges();
+    }
+
+    public void WipeAll()
+    {
+        foreach (var item in GetAll())
+        {
+            _data.Projects.Remove(item);
+        }
         _data.SaveChanges();
     }
 }

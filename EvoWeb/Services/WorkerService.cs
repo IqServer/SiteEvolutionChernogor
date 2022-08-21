@@ -23,4 +23,18 @@ public class WorkerService
         _data.Add(newWorker);
         _data.SaveChanges();
     }
+
+    public List<Worker> GetAll()
+    {
+        return _data.Workers.ToList();
+    }
+
+    public void WipeAll()
+    {
+        foreach (var item in GetAll())
+        {
+            _data.Workers.Remove(item);
+        }
+        _data.SaveChanges();
+    }
 }

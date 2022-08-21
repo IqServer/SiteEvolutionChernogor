@@ -8,6 +8,7 @@ public class Request
     public int Id { get; set; }
     [JsonIgnore]
     public DateTime CreatedAt { get; init; } = DateTime.UtcNow;
+    public bool IsActive { get; set; }
     public string Name { get; set; }
     public string Surname { get; set; }
     public string FathersName { get; set; }
