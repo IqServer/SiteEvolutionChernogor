@@ -34,9 +34,9 @@ public class WorkerController
     }
 
     [HttpPost("UpdateWorker")]
-    public void UpdateWorker(int id, string description)
+    public void UpdateWorker([FromBody]Worker worker)
     {
-        _service.UpdateWorker(id, description);
+        _service.UpdateWorker(worker);
     }
 
     [HttpDelete("RemoveWorker")]

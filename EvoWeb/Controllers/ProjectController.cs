@@ -51,8 +51,8 @@ public class ProjectController : ControllerBase
     }
 
     [HttpPost("UpdateProject")]
-    public void UpdateProject(int id, string description, uint price)
+    public void UpdateProject([FromBody]Project project)
     {
-        _service.UpdateProject(id, description, price);
+        _service.UpdateProject(project);
     }
 }

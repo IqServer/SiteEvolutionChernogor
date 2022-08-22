@@ -53,10 +53,8 @@ public class WorkerService
         _data.SaveChanges();
     }
 
-    public void UpdateWorker(int id ,string description)
+    public void UpdateWorker(Worker worker)
     {
-        Worker worker = _data.Workers.FirstOrDefault(x => x.Id == id);
-        worker.Description = description;
         _data.Workers.Update(worker);
         _data.SaveChanges();
     }

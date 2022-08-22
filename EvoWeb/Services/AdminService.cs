@@ -64,7 +64,7 @@ public class AdminService
         return _data.Admins.FirstOrDefault(x => x.Id == id);
     }
 
-    public void EditPass(int id,string oldPass, string newPass)
+    public void UpdatePass(int id,string oldPass, string newPass)
     {
         Admin? admin = _data.Admins.FirstOrDefault(x => x.Id == id);
         if (admin.Password == oldPass)

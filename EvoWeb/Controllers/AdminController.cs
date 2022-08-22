@@ -34,10 +34,10 @@ public class AdminController
         _adminService.AddAdmin(admin);
     }
 
-    [HttpPost("EditPass")] 
-    public void EditPass(int id, string oldPass, string newPass)
+    [HttpPost("UpdatePass")] 
+    public void UpdatePass(int id, string oldPass, string newPass)
     {
-        _adminService.EditPass(id, oldPass, newPass);
+        _adminService.UpdatePass(id, oldPass, newPass);
     }
 
     [HttpDelete("Remove")]

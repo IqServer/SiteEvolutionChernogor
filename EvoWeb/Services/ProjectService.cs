@@ -55,11 +55,8 @@ public class ProjectService
         _data.SaveChanges();
     }
 
-    public void UpdateProject(int id, string description, uint price)
+    public void UpdateProject(Project project)
     {
-        Project project = _data.Projects.FirstOrDefault(x => x.Id == id);
-        project.Description = description;
-        project.Price = price;
         _data.Projects.Update(project);
         _data.SaveChanges();
     }
