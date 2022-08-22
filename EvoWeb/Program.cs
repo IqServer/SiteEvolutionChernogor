@@ -11,6 +11,15 @@ builder.Host.UseSerilog((ctx, lc) => lc
     .Enrich.WithProperty("Firma", "fir1")
 );
 
+builder.Services.AddCors(options => options.AddPolicy("AllowAll",
+    builder =>
+    {
+        builder
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    }));
+
 ConfigurationManager configuration = builder.Configuration;
 
 builder.Services.AddDbContext<DataContext>(opt =>
@@ -33,11 +42,11 @@ builder.Services.AddScoped<WorkerService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
+
+app.UseRouting();
+app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
 
