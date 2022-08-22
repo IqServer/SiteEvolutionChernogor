@@ -1,7 +1,5 @@
 ﻿namespace EvoWeb.Services;
 
-
-
 public class RequestService
 {
     private DataContext _data;
@@ -13,7 +11,7 @@ public class RequestService
         _logger = logger;
     }
 
-    public void Default()
+    public void DefaultRequest()
     {
         Request newRequest = new Request();
         newRequest.Surname = "Белич";
@@ -21,25 +19,47 @@ public class RequestService
         newRequest.FathersName = "Александрович";
         newRequest.Email = "йцуке@rtyui.rtyui";
         newRequest.Mobile = "88005553535";
-        newRequest.Description = "Lorem Ipsum";
-        newRequest.Title = "Пуп";
+        newRequest.Description = "Описание";
+        newRequest.Title = "Штука";
         newRequest.IsCustom = false;
         
         _data.Add(newRequest);
         _data.SaveChanges();
     }
 
-    public List<Request> GetAll()
+    public void WipeAllRequests()
     {
-        return _data.Requests.ToList();
-    }
-
-    public void WipeAll()
-    {
-        foreach (var item in GetAll())
+        foreach (var item in GetAllRequests())
         {
             _data.Requests.Remove(item);
         }
         _data.SaveChanges();
     }
+    
+    public Request GetRequest(int id)
+    {
+        Request request = _data.Requests.FirstOrDefault(x => x.Id == id);
+        _logger.Log(LogLevel.Information, $"Получена заявка {request.Title}");
+        return request;
+    }
+
+    public List<Request> GetAllRequests()
+    {
+        _logger.Log(LogLevel.Information, "Получены все заявки");
+        return _data.Requests.ToList();
+    }
+
+    public void AddRequest(Request request)
+    {
+        _data.Requests.Add(request);
+        _data.SaveChanges();
+        _logger.Log(LogLevel.Information, $"Записан запрос {request.Title}");
+    }
+
+    public void RemoveRequest(int id)
+    {
+        Request request = _data.Requests.FirstOrDefault(x => x.Id == id);
+        _data.Requests.Remove(request);
+        _data.SaveChanges();
+    } 
 }

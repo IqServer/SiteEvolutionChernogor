@@ -31,7 +31,7 @@ public class DefaultDataController : ControllerBase
         _logger.Log(LogLevel.Warning, "Выполняется создание данных по умолчанию...");
         _projectService.DefaultProject();
         _workerService.Default();
-        _requestService.Default();
+        _requestService.DefaultRequest();
         _adminService.DefaultAdmin();
     }
 
@@ -41,7 +41,7 @@ public class DefaultDataController : ControllerBase
         _logger.Log(LogLevel.Warning, "Выполняется очистка базы данных...");
         _adminService.WipeAllAdmins();
         _projectService.WipeAllProjects();
-        _requestService.WipeAll();
+        _requestService.WipeAllRequests();
         _workerService.WipeAll();
     }
 }
