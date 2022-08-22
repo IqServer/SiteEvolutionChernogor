@@ -70,6 +70,7 @@ public class ProjectService
         newProject.Description = "Проект для VR";
         newProject.AdvertLink = "about:blank";
         newProject.IconLink = "about:blank";
+        newProject.IsActive = true;
         newProject.Price = 100;
         _data.Add(newProject);
         _data.SaveChanges();

@@ -27,7 +27,7 @@ public class RequestController
     }
 
     [HttpPost("AddRequest")]
-    public void AddRequest(Request newRequest)
+    public void AddRequest([FromBody]Request newRequest)
     {
         _service.AddRequest(newRequest);
     }

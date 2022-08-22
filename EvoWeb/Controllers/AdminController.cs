@@ -29,12 +29,12 @@ public class AdminController
     }
 
     [HttpPost("AddAdmin")]
-    public void AddAdmin(Admin admin)
+    public void AddAdmin([FromBody]Admin admin)
     {
         _adminService.AddAdmin(admin);
     }
 
-    [HttpPost("EditPass")]
+    [HttpPost("EditPass")] 
     public void EditPass(int id, string oldPass, string newPass)
     {
         _adminService.EditPass(id, oldPass, newPass);

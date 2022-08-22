@@ -14,11 +14,28 @@ public class WorkerController
         _logger = logger;
     }
 
-    /*
+    
+    [HttpGet("GetAllWorkers")]
+    public List<Worker> GetAllWorkers(int id)
+    {
+        return _service.GetAll();
+    }
+
     [HttpGet("GetWorker")]
     public Worker GetWorker(int id)
     {
-        
+        return _service.GetWorker(id);
     }
-    */
+
+    [HttpPost("AddWorker")]
+    public void AddWorker([FromBody]Worker newWorker)
+    {
+        _service.AddWorker(newWorker);
+    }
+
+    [HttpPost("UpdateWorker")]
+    public void UpdateWorker(int id, string description)
+    {
+        _service.UpdateWorker(id, description);
+    }
 }
