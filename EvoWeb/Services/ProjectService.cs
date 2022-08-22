@@ -21,12 +21,12 @@ public class ProjectService
     public List<Project> GetAllProjects()
     {
         _logger.Log(LogLevel.Information, "Вызваны все проекты");
-        return _data.Projects.ToList();
+        return _data.Projects.Where(x => x.IsActive == true).ToList();
     }
 
     public Project? GetProject(int id)
     {
-        Project? project = _data.Projects.FirstOrDefault(x => x.Id == id);
+        Project? project = _data.Projects.FirstOrDefault(x => x.Id == id && x.IsActive == true);
         _logger.Log(LogLevel.Information, $"Найден проект {project.Title}");
         return project;
     }
@@ -55,7 +55,7 @@ public class ProjectService
         _data.SaveChanges();
     }
 
-    public void EditProject(int id, string description, uint price)
+    public void UpdateProject(int id, string description, uint price)
     {
         Project project = _data.Projects.FirstOrDefault(x => x.Id == id);
         project.Description = description;

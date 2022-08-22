@@ -50,9 +50,9 @@ public class ProjectController : ControllerBase
         _service.SetActive(id);
     }
 
-    [HttpOptions("EditProject")]
-    public void EditProject(int id, string description, uint price)
+    [HttpOptions("UpdateProject")]
+    public void UpdateProject(int id, string description, uint price)
     {
-        _service.EditProject(id, description, price);
+        _service.UpdateProject(id, description, price);
     }
 }
