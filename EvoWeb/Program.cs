@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((ctx, lc) => lc
     .WriteTo.Console()
     .Enrich.WithProperty("Firma", "fir1")
+    .WriteTo.Seq("http://localhost:5341")
 );
 
 builder.Services.AddCors(options => options.AddPolicy("AllowAll",

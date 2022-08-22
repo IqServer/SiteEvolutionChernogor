@@ -64,7 +64,7 @@ public class AdminService
         return _data.Admins.FirstOrDefault(x => x.Id == id);
     }
 
-    public void EditPass(int id,string oldPass, string newPass)
+    public void UpdatePass(int id,string oldPass, string newPass)
     {
         Admin? admin = _data.Admins.FirstOrDefault(x => x.Id == id);
         if (admin.Password == oldPass)
@@ -76,5 +76,8 @@ public class AdminService
         {
             _logger.Log(LogLevel.Error, $"Пароль неверен или не найден пользователь");
         }
+
+        _data.Admins.Update(admin);
+        _data.SaveChanges();
     }
 }

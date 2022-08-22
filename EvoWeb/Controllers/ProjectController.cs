@@ -50,9 +50,9 @@ public class ProjectController : ControllerBase
         _service.SetActive(id);
     }
 
-    [HttpOptions("UpdateProject")]
-    public void UpdateProject(int id, string description, uint price)
+    [HttpPost("UpdateProject")]
+    public void UpdateProject([FromBody]Project project)
     {
-        _service.UpdateProject(id, description, price);
+        _service.UpdateProject(project);
     }
 }

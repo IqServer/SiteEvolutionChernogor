@@ -4,7 +4,6 @@ namespace EvoWeb;
 
 public class Worker
 {
-    [JsonIgnore]
     public int Id { get; init; }
     [JsonIgnore]
     public DateTime CreatedAt { get; init; } = DateTime.UtcNow;

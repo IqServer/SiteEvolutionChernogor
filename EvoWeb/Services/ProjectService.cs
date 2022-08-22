@@ -55,11 +55,8 @@ public class ProjectService
         _data.SaveChanges();
     }
 
-    public void UpdateProject(int id, string description, uint price)
+    public void UpdateProject(Project project)
     {
-        Project project = _data.Projects.FirstOrDefault(x => x.Id == id);
-        project.Description = description;
-        project.Price = price;
         _data.Projects.Update(project);
         _data.SaveChanges();
     }
@@ -70,6 +67,7 @@ public class ProjectService
         newProject.Description = "Проект для VR";
         newProject.AdvertLink = "about:blank";
         newProject.IconLink = "about:blank";
+        newProject.IsActive = true;
         newProject.Price = 100;
         _data.Add(newProject);
         _data.SaveChanges();
