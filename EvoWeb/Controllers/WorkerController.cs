@@ -16,7 +16,7 @@ public class WorkerController
 
     
     [HttpGet("GetAllWorkers")]
-    public List<Worker> GetAllWorkers(int id)
+    public List<Worker> GetAllWorkers()
     {
         return _service.GetAll();
     }
@@ -37,5 +37,11 @@ public class WorkerController
     public void UpdateWorker(int id, string description)
     {
         _service.UpdateWorker(id, description);
+    }
+
+    [HttpDelete("RemoveWorker")]
+    public void Remove(int id)
+    {
+        _service.Remove(id);
     }
 }

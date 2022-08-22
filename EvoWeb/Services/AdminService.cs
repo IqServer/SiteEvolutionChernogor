@@ -76,5 +76,8 @@ public class AdminService
         {
             _logger.Log(LogLevel.Error, $"Пароль неверен или не найден пользователь");
         }
+
+        _data.Admins.Update(admin);
+        _data.SaveChanges();
     }
 }

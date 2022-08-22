@@ -60,5 +60,12 @@ public class WorkerService
         _data.Workers.Update(worker);
         _data.SaveChanges();
     }
+
+    public void Remove(int id)
+    {
+        Worker? worker = _data.Workers.FirstOrDefault(x => x.Id == id);
+        _data.Remove(worker);
+        _data.SaveChanges();
+    }
 }
 
