@@ -20,4 +20,9 @@ public class EmailController : Controller
         await emailService.SendEmailAsync(request.Email, "Тема письма", "Тест письма: тест!");
         return "Отправил";
     }
+
+    void dfghj()
+    {
+        
+    }
 }

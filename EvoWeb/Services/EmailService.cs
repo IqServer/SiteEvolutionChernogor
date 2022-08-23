@@ -10,7 +10,7 @@ namespace EvoWeb.Services
         {
             var emailMessage = new MimeMessage();
  
-            emailMessage.From.Add(new MailboxAddress("Администрация сайта", "jeramie.batz@ethereal.email"));
+            emailMessage.From.Add(new MailboxAddress("Администрация сайта", "evoweb.qwerty@yandex.ru"));
             emailMessage.To.Add(new MailboxAddress("", email));
             emailMessage.Subject = subject;
             emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
@@ -20,8 +20,8 @@ namespace EvoWeb.Services
              
             using (var client = new SmtpClient())
             {
-                await client.ConnectAsync("smtp.ethereal.email", 587, SecureSocketOptions.StartTls); // многопоток
-                await client.AuthenticateAsync("jeramie.batz@ethereal.email", "qFvMSZaWQnBNh4yBas"); // многопоток
+                await client.ConnectAsync("smtp.yandex.ru", 587, SecureSocketOptions.StartTls); // многопоток
+                await client.AuthenticateAsync("evoweb.qwerty", "ktvugpfzbzmtudjs"); // многопоток
                 await client.SendAsync(emailMessage); // многопоток
                 await client.DisconnectAsync(true); // многопоток
             }
