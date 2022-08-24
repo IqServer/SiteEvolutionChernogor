@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EvoWeb.Controllers;
 
+[ApiController]
+[Route("/api/[controller]/[action]")]
+
 public class ProjectController : ControllerBase
 {
     private readonly ILogger<ProjectController> _logger;

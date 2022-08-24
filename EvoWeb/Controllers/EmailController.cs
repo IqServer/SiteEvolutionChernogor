@@ -4,6 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EvoWeb.Controllers;
 
+[ApiController]
+[Route("/api/[controller]/[action]")]
+
 public class EmailController : Controller
 {
     private DataContext _data;
