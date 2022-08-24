@@ -44,4 +44,16 @@ public class WorkerController
     {
         _service.Remove(id);
     }
+
+    [HttpOptions("SetInactive")]
+    public void SetInactive(int id)
+    {
+        _service.SetInactive(id);
+    }
+
+    [HttpOptions("SetActive")]
+    public void SetActive(int id)
+    {
+        _service.SetActive(id);
+    }
 }

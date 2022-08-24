@@ -55,18 +55,21 @@ public class AdminService
 
     public void AddAdmin(Admin admin)
     {
+        _logger.Log(LogLevel.Information, $"Добавлен админ {admin.Login}");
         _data.Admins.Add(admin);
         _data.SaveChanges();
     }
 
     public Admin? GetAdmin(int id)
     {
-        return _data.Admins.FirstOrDefault(x => x.Id == id);
+        var admin = _data.Admins.FirstOrDefault(x => x.Id == id);
+        _logger.Log(LogLevel.Information, $"Найден {admin.Login}");
+        return admin;
     }
 
     public void UpdatePass(int id,string oldPass, string newPass)
     {
-        Admin? admin = _data.Admins.FirstOrDefault(x => x.Id == id);
+        var admin = _data.Admins.FirstOrDefault(x => x.Id == id);
         if (admin.Password == oldPass)
         {   
             admin.Password = newPass;

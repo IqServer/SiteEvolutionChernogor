@@ -65,6 +65,10 @@ namespace EvoWeb.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("DownLink")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("IconLink")
                         .IsRequired()
                         .HasColumnType("text");
@@ -110,6 +114,9 @@ namespace EvoWeb.Migrations
                     b.Property<bool>("IsCustom")
                         .HasColumnType("boolean");
 
+                    b.Property<bool>("IsHistory")
+                        .HasColumnType("boolean");
+
                     b.Property<string>("Mobile")
                         .IsRequired()
                         .HasColumnType("text");
@@ -151,6 +158,9 @@ namespace EvoWeb.Migrations
                         .HasColumnType("text");
 
                     b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsHistory")
                         .HasColumnType("boolean");
 
                     b.Property<string>("Name")
