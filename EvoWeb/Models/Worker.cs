@@ -14,5 +14,4 @@ public class Worker
     public string Post { get; set; }
     public string Description { get; set; }
     public string PhotoLink { get; set; } 
-    public bool IsHistory { get; set; }
 }

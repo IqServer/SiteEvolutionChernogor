@@ -55,4 +55,12 @@ public class ProjectController : ControllerBase
     {
         _service.UpdateProject(project);
     }
+
+    [HttpGet("GetAllActiveProjects")]
+    public void GetAllActiveProjects()
+    {
+        _service.GetAllActiveProjects();
+    }
+    
+    
 }

@@ -37,5 +37,23 @@ public class RequestController
     {
         _service.RemoveRequest(id);
     }
+
+    [HttpGet("GetAllActiveRequest")]
+    public void GetAllActiveRequets()
+    {
+        _service.GetAllActiveRequests();
+    }
+
+    [HttpOptions("SetInactive")]
+    public void SetInactive(int id)
+    {
+        _service.SetInactive(id);
+    }
+
+    [HttpOptions("SetActive")]
+    public void SetActive(int id)
+    {
+        _service.SetActive(id);
+    }
     
 }

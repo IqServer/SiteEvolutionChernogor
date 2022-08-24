@@ -40,7 +40,7 @@ public class EmailController : Controller
             "Заявка одобрена",
             $"Здравствуйте, {request.Surname} {request.Name}. Ваша заявка на приобретение {request.Title} одобрена." +
             $"Ваша ссылка на скачивание: {project.DownLink}");
-        request.IsHistory = true;
+        request.IsActive = false;
         _data.Requests.Update(request);
         await _data.SaveChangesAsync();
     }
@@ -52,7 +52,7 @@ public class EmailController : Controller
         await _service.SendEmailAsync(request.Email,
             "Заявка одобрена",
             $"Здравствуйте, {request.Surname} {request.Name}. Ваша заявка на приобретение {request.Title} отклонена");
-        request.IsHistory = true;
+        request.IsActive = false;
         _data.Requests.Update(request);
         await _data.SaveChangesAsync();
     }

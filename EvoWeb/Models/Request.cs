@@ -15,5 +15,5 @@ public class Request
     public bool IsCustom { get; set; }
     public string Title { get; set; }
     public string Description { get; set; }
-    public bool IsHistory { set; get; }
+    public bool IsActive { set; get; }
 }

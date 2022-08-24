@@ -13,15 +13,22 @@ public class ProjectService
 
     public void AddProjects(Project newProject)
     {
+        _logger.Log(LogLevel.Information, $"Добавлен проект {newProject.Title}");
         _data.Add(newProject);
         _data.SaveChanges();
         
     }
 
+    public List<Project> GetAllActiveProjects()
+    {
+        _logger.Log(LogLevel.Information, "Вызваны все активные проекты");
+        return _data.Projects.Where(x => x.IsActive == true).ToList();
+    }
+    
     public List<Project> GetAllProjects()
     {
         _logger.Log(LogLevel.Information, "Вызваны все проекты");
-        return _data.Projects.Where(x => x.IsActive == true).ToList();
+        return _data.Projects.ToList();
     }
 
     public Project? GetProject(int id)
@@ -43,6 +50,7 @@ public class ProjectService
     {
         Project project = _data.Projects.FirstOrDefault(x => x.Id == id);
         project.IsActive = false;
+        _logger.Log(LogLevel.Information, $"Проект {project.Title} неактивен");
         _data.Projects.Update(project);
         _data.SaveChanges();
     }
@@ -51,12 +59,14 @@ public class ProjectService
     {
         Project project = _data.Projects.FirstOrDefault(x => x.Id == id);
         project.IsActive = true;
+        _logger.Log(LogLevel.Information, $"Проект {project.Title} активен");
         _data.Projects.Update(project);
         _data.SaveChanges();
     }
 
     public void UpdateProject(Project project)
     {
+        _logger.Log(LogLevel.Information, $"Обновлен проект {project.Title}");
         _data.Projects.Update(project);
         _data.SaveChanges();
     }
