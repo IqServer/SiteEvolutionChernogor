@@ -22,7 +22,8 @@ public class WorkerService
             FathersName = "Петрович",
             Post = "Мафиозник",
             Description = "Lorem Ipsum",
-            PhotoLink = "about:blank"
+            PhotoLink = "about:blank",
+            IsHistory = false
         };
         _data.Add(newWorker);
         _data.SaveChanges();

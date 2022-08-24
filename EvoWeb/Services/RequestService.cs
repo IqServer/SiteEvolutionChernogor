@@ -13,16 +13,19 @@ public class RequestService
 
     public void DefaultRequest()
     {
-        Request newRequest = new Request();
-        newRequest.Surname = "Белич";
-        newRequest.Name = "Дмитрий";
-        newRequest.FathersName = "Александрович";
-        newRequest.Email = "йцуке@rtyui.rtyui";
-        newRequest.Mobile = "88005553535";
-        newRequest.Description = "Описание";
-        newRequest.Title = "Штука";
-        newRequest.IsCustom = false;
-        
+        Request newRequest = new Request
+        {
+            Surname = "Белич",
+            Name = "Дмитрий",
+            FathersName = "Александрович",
+            Email = "йцуке@rtyui.rtyui",
+            Mobile = "88005553535",
+            Description = "Описание",
+            Title = "Штука",
+            IsCustom = false,
+            IsHistory = false
+        };
+
         _data.Add(newRequest);
         _data.SaveChanges();
     }

@@ -62,13 +62,16 @@ public class ProjectService
     }
     public void DefaultProject()
     {
-        Project newProject = new Project();
-        newProject.Title = "Бакуган VR";
-        newProject.Description = "Проект для VR";
-        newProject.AdvertLink = "about:blank";
-        newProject.IconLink = "about:blank";
-        newProject.IsActive = true;
-        newProject.Price = 100;
+        Project newProject = new Project
+        {
+            Title = "Бакуган VR",
+            Description = "Проект для VR",
+            AdvertLink = "about:blank",
+            IconLink = "about:blank",
+            IsActive = true,
+            Price = 100,
+            DownLink = "about:blank"
+        };
         _data.Add(newProject);
         _data.SaveChanges();
         _logger.Log(LogLevel.Information, "Создан проект по умолчанию");
