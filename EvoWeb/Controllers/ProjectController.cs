@@ -1,10 +1,11 @@
 ﻿using EvoWeb.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EvoWeb.Controllers;
 
 [ApiController]
-[Route("/api/[controller]/[action]")]
+[Route("/api/[controller]")]
 
 public class ProjectController : ControllerBase
 {
@@ -60,9 +61,9 @@ public class ProjectController : ControllerBase
     }
 
     [HttpGet("GetAllActiveProjects")]
-    public void GetAllActiveProjects()
+    public List<Project> GetAllActiveProjects()
     {
-        _service.GetAllActiveProjects();
+        return _service.GetAllActiveProjects();
     }
     
     

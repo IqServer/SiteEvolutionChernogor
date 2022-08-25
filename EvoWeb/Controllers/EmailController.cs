@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace EvoWeb.Controllers;
 
 [ApiController]
-[Route("/api/[controller]/[action]")]
+[Route("/api/[controller]")]
 
 public class EmailController : Controller
 {

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EvoWeb.Controllers;
 
 [ApiController]
-[Route("/api/[controller]/[action]")]
+[Route("/api/[controller]")]
 
 public class RequestController
 {

@@ -4,7 +4,7 @@ using EvoWeb.Services;
 namespace EvoWeb.Controllers;
 
 [ApiController]
-[Route("/api/[controller]/[action]")]
+[Route("/api/[controller]")]
 
 public class DefaultDataController : ControllerBase
 {
