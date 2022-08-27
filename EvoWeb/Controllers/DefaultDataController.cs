@@ -3,8 +3,12 @@ using EvoWeb.Services;
 
 namespace EvoWeb.Controllers;
 
+[ApiController]
+[Route("/api/[controller]")]
+
 public class DefaultDataController : ControllerBase
 {
+    private DataContext _data;
     private ILogger<DefaultDataController> _logger;
     private ProjectService _projectService;
     private AdminService _adminService;
@@ -16,13 +20,15 @@ public class DefaultDataController : ControllerBase
         ProjectService projectService,
         AdminService adminService,
         RequestService requestService,
-        WorkerService workerService)
+        WorkerService workerService,
+        DataContext data)
     {
         _logger = logger;
         _projectService = projectService;
         _adminService = adminService;
         _requestService = requestService;
         _workerService = workerService;
+        _data = data;
     }
 
     [HttpPost("DefaultAllData")]
@@ -43,5 +49,10 @@ public class DefaultDataController : ControllerBase
         _projectService.WipeAllProjects();
         _requestService.WipeAllRequests();
         _workerService.WipeAll();
+    }
+    
+    [HttpGet]
+    public void CreateDB(){
+        _data.CreateBDNew();
     }
 }

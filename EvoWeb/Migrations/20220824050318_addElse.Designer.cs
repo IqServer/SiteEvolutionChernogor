@@ -3,6 +3,7 @@ using System;
 using EvoWeb;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EvoWeb.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220824050318_addElse")]
+    partial class addElse
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -111,10 +113,10 @@ namespace EvoWeb.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<bool>("IsActive")
+                    b.Property<bool>("IsCustom")
                         .HasColumnType("boolean");
 
-                    b.Property<bool>("IsCustom")
+                    b.Property<bool>("IsHistory")
                         .HasColumnType("boolean");
 
                     b.Property<string>("Mobile")
@@ -158,6 +160,9 @@ namespace EvoWeb.Migrations
                         .HasColumnType("text");
 
                     b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsHistory")
                         .HasColumnType("boolean");
 
                     b.Property<string>("Name")

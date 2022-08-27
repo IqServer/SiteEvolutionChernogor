@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EvoWeb.Controllers;
 
+[ApiController]
+[Route("/api/[controller]")]
+
 public class WorkerController
 {
     private WorkerService _service;
@@ -45,13 +48,13 @@ public class WorkerController
         _service.Remove(id);
     }
 
-    [HttpOptions("SetInactive")]
+    [HttpOptions("SetInactiveWorker")]
     public void SetInactive(int id)
     {
         _service.SetInactive(id);
     }
 
-    [HttpOptions("SetActive")]
+    [HttpOptions("SetActiveWorker")]
     public void SetActive(int id)
     {
         _service.SetActive(id);
